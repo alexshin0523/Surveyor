@@ -23,7 +23,7 @@ class Header extends Component {
 
   render () {
     return (
-      <nav>
+      <nav style={{ 'backgroundColor': '#333A56' }}>
         <div className="nav-wrapper">
           <Link
             to={this.props.auth ? '/surveys' : '/'}
