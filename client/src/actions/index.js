@@ -3,10 +3,10 @@ import { FETCH_USER, FETCH_SURVEYS } from './types';
 
 
 export const fetchUser = () => async dispatch => {
-    const res = await axios.get('/api/current_user');
+  const res = await axios.get('/api/current_user');
 
-    dispatch({ type: FETCH_USER, payload: res.data });
-  };
+  dispatch({ type: FETCH_USER, payload: res.data });
+};
 
 export const handleToken = token => async dispatch => {
   const res = await axios.post('/api/stripe', token);
@@ -25,4 +25,13 @@ export const fetchSurveys = () => async dispatch => {
   const res = await axios.get('/api/surveys');
 
   dispatch({ type: FETCH_SURVEYS, payload: res.data });
+};
+
+export const deleteSurvey = survey => async dispatch => {
+  // console.log(survey);
+  // console.log('Entered deleteSurvey');
+  const res = await axios.post('/api/surveys/delete', survey);
+  // console.log('Finished HTTP Request');
+  dispatch({ type: FETCH_SURVEYS, payload: res.data });
+  // console.log('Exiting deleteSurvey');
 };

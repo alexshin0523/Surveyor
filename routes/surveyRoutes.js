@@ -11,7 +11,7 @@ const Survey = mongoose.model('surveys');
 
 module.exports = app => {
   app.get('/api/surveys', requireLogin, async (req, res) => {
-    const surveys = await Survey.find({ _user: req.user.id })
+    const surveys = await Survey.find({ _user: req.user.id, isDeleted: false })
       .select({ recipients: false });
 
     res.send(surveys);
@@ -78,5 +78,14 @@ module.exports = app => {
       res.status(422).send(err);
     }
 
+  });
+
+  app.post('/api/surveys/delete', requireLogin, async (req, res) => {
+    const { _id } = req.body;
+    await Survey.updateOne({ _id }, { isDeleted: true }).exec();
+    const surveys = await Survey.find({ _user: req.user.id, isDeleted: false })
+      .select({ recipients: false });
+
+    res.send(surveys);
   });
 };

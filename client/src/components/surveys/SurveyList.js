@@ -6,8 +6,7 @@ import SurveyListItem from './SurveyListItem';
 class SurveyList extends Component {
   // state = { onDelete: false };
   //
-  // deleteSurvey = (survey) => {
-  //   survey.updateOne({ isDeleted: true });
+  // onDelete = (survey) => {
   //   this.setState({
   //     onDelete: true
   //   });
@@ -19,13 +18,15 @@ class SurveyList extends Component {
   }
 
   renderSurveys() {
-    return this.props.surveys.reverse().map(survey => {
-      const data = [
-        { name: 'Yes', value: survey.yes },
-        { name: 'No', value: survey.no }
-      ];
-      return (<SurveyListItem data={data} survey={survey} />);
-    });
+    return this.props.surveys
+      .reverse()
+      .map(survey => {
+        const data = [
+          { name: 'Yes', value: survey.yes },
+          { name: 'No', value: survey.no }
+        ];
+        return (<SurveyListItem key={survey._id} data={data} survey={survey} />);
+      });
   }
 
   render() {

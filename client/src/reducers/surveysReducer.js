@@ -5,7 +5,7 @@ function surveysReducer(state = [], action) {
     case FETCH_SURVEYS:
       return action.payload;
     default:
-    return state;
+      return state;
   }
 }
 
