@@ -1,12 +1,12 @@
-#Surveyor
+# Surveyor
 
 Surveyor is a web application used by business owners to mass email surveys to their consumers and collect data, which is organized in statistical graphs. In order to send out surveys, users must purchase credits that allow them to send out surveys. After the surveys are sent out, the survey information and collected data is neatly displayed on the dashboard for the user's convenience.
 
-##Running Development Mode
+## Running Development Mode
 
 First, navigate to `C:\{your_path}\Surveyor\server` and use `npm install` to download dependencies from package.json. Then run `npm run dev` to start the development mode.
 
-##Dependencies
+## Dependencies
 
 This project is based in JavaScript and is using npm to manage packages. The dependencies of this project are:
 1. React
